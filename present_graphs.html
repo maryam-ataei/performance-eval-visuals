@@ -23,6 +23,12 @@ h2, h3 {
   margin-top: 40px;
   text-transform: none;
 }
+.figure-desc {
+  max-width: 800px;
+  font-size: 15px;
+  line-height: 1.5em;
+  color: #444;
+}
 .grid {
   display: flex;
   flex-wrap: wrap;
@@ -131,12 +137,27 @@ hr.bold-line {
 
 <h1>TCP Parameter Change Results</h1>
 
-<div class="config-box">
-  <strong>Network Configuration</strong><br>
-  Rate: 80&nbsp;Mb/s &nbsp;|&nbsp;
-  Delay: 100&nbsp;ms &nbsp;|&nbsp;
-  Queue: 5&nbsp;BDP
+<div style="text-align:left; max-width:800px;">
+  <ul style="font-size:16px;line-height:1.6em;color:#333;">
+    <li>The network setup includes a Raspberry Pi acting as the router.</li>
+    <li>The client machine is connected to the Pi.</li>
+    <li>The following network parameters were used during the experiments:</li>
+  </ul>
+
+  <div class="config-box" style="margin-left:0;">
+    <strong>Network Configuration</strong><br>
+    Rate: 80&nbsp;Mb/s &nbsp;|&nbsp;
+    Delay: 100&nbsp;ms &nbsp;|&nbsp;
+    Queue: 5&nbsp;BDP
+  </div>
 </div>
+
+
+<p style="max-width:800px;margin:20px auto 30px auto;font-size:16px;line-height:1.6em;color:#333;">
+  The following results correspond to <strong>FreeBSD default-NewReno with default TCP parameters</strong>. Hystart++ and SEARCH are disabled.
+  These serve as the baseline for comparing parameter tuning effects.
+</p>
+
 
 <h1>FreeBSD_Default Parameters</h1>
 
@@ -150,6 +171,12 @@ hr.bold-line {
 </table>
 
 <h2>default_newreno_off (default_parameters)</h2>
+<ul class="figure-desc">
+  <li>This setup uses FreeBSD’s default TCP parameters and the default-NewReno congestion control.</li>
+  <li>The cwnd growth is limited by the receiver window (<em>rwnd</em>), reaching stability around 6 MB.</li>
+  <li>Throughput stabilizes near the link rate, with Goodput slightly lower due to TCP overhead.</li>
+</ul>
+
 <div class='grid'>
   <div class='card'><img class='zoom-img' src='freebsd/default_off_default_parameters/plots/log_data1_cwnd_rwind_cwndlimited_zoomed.png'><p>cwnd_rwind</p></div>
   <div class='card'><img class='zoom-img' src='freebsd/default_off_default_parameters/plots/log_data1_srtts_zoomed.png'><p>srtt</p></div>
@@ -157,6 +184,13 @@ hr.bold-line {
 </div>
 
 <h1>FreeBSD</h1>
+
+<p style="max-width:800px;margin:20px auto 30px auto;font-size:16px;line-height:1.6em;color:#333;text-align:left;">
+  In this section, we <strong>modified several TCP buffer and congestion control parameters</strong> 
+  to analyze their impact on cwnd, throughput and RTT.
+  Results are shown for both <strong>default-NewReno</strong> and <strong>RACK-NewReno</strong> implementations. Hystart++ and SEARCH are disabled.
+</p>
+
 
 <table>
 <tr><th>Parameter</th><th>Default</th><th>Set Value</th></tr>
@@ -168,6 +202,12 @@ hr.bold-line {
 </table>
 
 <h2>default_newreno_off</h2>
+<ul class="figure-desc">
+  <li>Here, buffer and congestion-related parameters such as <em>sendspace</em> and <em>maxsockbuf</em> are increased significantly.</li>
+  <li>The larger abc_l_var and buffers allow a higher <em>cwnd</em>.</li>
+  <li>The <em>cwnd</em> grows rapidly, but an abrupt collapse occurs due to a retransmission timeout triggered by excessive queue buildup.</li>
+  <li>As a result, throughput drops sharply after the peak.</li>
+</ul>
 <div class='grid'>
   <div class='card'><img class='zoom-img' src='freebsd/default_newreno_off_param_sweep-abc200_send1048576_inc8192_max134217728_sock268435456/plots/log_data1_cwnd_rwind_cwndlimited_zoomed.png'><p>cwnd_rwind</p></div>
   <div class='card'><img class='zoom-img' src='freebsd/default_newreno_off_param_sweep-abc200_send1048576_inc8192_max134217728_sock268435456/plots/log_data1_srtts_zoomed.png'><p>srtt</p></div>
@@ -186,6 +226,11 @@ hr.bold-line {
 <hr class="section-line">
 
 <h2>rack_newreno_off</h2>
+<ul class="figure-desc">
+  <li>This experiment evaluates the <strong>RACK TCP</strong> implementation in FreeBSD using the same enlarged buffer parameters as before.</li>
+  <li>The <em>cwnd</em> grows steadily without collapsing, showing that RACK’s time-based loss detection avoids retransmission timeouts.</li>
+  <li>The effective RTT increases gradually due to queue buildup but then stabilizes, while throughput and Goodput reach high steady values with minimal oscillation, then throughput dip occurs.</li>
+</ul>
 <div class='grid'>
   <div class='card'><img class='zoom-img' src='freebsd/rack_newreno_off_param_sweep-abc200_send1048576_inc8192_max134217728_sock268435456/plots/log_data3_cwnd_rwind_cwndlimited_zoomed.png'><p>cwnd_rwind</p></div>
   <div class='card'><img class='zoom-img' src='freebsd/rack_newreno_off_param_sweep-abc200_send1048576_inc8192_max134217728_sock268435456/plots/log_data3_ertts_zoomed.png'><p>ertt</p></div>
@@ -205,6 +250,11 @@ hr.bold-line {
 
 <h1>Linux</h1>
 
+<p style="max-width:800px;margin:20px auto 30px auto;font-size:16px;line-height:1.6em;color:#333;text-align:left;">
+  The following figures show <strong>Linux TCP performance</strong> under the same network conditions. HyStart and SEARCH are disabled.
+</p>
+
+
 <table>
 <tr><th>Parameter</th><th>Default</th><th>Set Value</th></tr>
 <tr><td>wmem</td><td>4096 87380 6291456</td><td class='changed'>4096 1048576 134217728</td></tr>
@@ -212,6 +262,12 @@ hr.bold-line {
 </table>
 
 <h3>linux_both_off</h3>
+<ul class="figure-desc">
+  <li>This figure shows <strong>Linux TCP</strong> behavior with both HyStart and SEARCH disabled, under identical network conditions.</li>
+  <li>The congestion window grows until <em>ssthresh</em> triggers, marking the transition to congestion avoidance.</li>
+  <li>RTT rises as the queue fills, while throughput and Goodput stabilize after the slow-start phase.</li>
+</ul>
+
 <div class='grid'>
   <div class='card'><img class='zoom-img' src='Linux/linux_both_off_reported_to_lawrence/plots/log_data1_cwnd_zoomed.png'><p>cwnd_ssthresh</p></div>
   <div class='card'><img class='zoom-img' src='Linux/linux_both_off_reported_to_lawrence/plots/log_data1_rtt.png'><p>rtt</p></div>
