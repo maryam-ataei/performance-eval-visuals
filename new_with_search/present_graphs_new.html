@@ -314,6 +314,13 @@ hr.bold-line {
 <tr><td>maxsockbuf</td><td>2097152</td><td class='changed'>268435456</td></tr>
 </table>
 
+<ul class="figure-desc">
+  <li><em>cwnd–ssthresh</em> clearly shows the flow <strong>exited slow start</strong> (ssthresh set).</li>
+  <li>However, this exit was <strong>not triggered by the SEARCH logic</strong>.</li>
+  <li>From logs: <strong>no ECN marks, no RTO, no packet loss</strong> were observed at the transition point.</li>
+  <li>Therefore, the slow-start exit was caused by <strong>another mechanism</strong> (non-loss, non-ECN). I am inspecting the code to pinpoint the exact trigger.</li>
+</ul>
+
 <div class='grid'>
   <div class='card'><img class='zoom-img' src='search_freebsd/doesnot_exit/log_data4_cwnd.png'><p>cwnd and ssthresh</p></div>
   <div class='card'><img class='zoom-img' src='search_freebsd/doesnot_exit/log_data4_cwnd_rwind_cwndlimited_zoomed.png'><p>cwnd vs rwind</p></div>
