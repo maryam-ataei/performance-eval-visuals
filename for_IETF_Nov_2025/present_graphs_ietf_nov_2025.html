@@ -213,6 +213,41 @@ hr.bold-line {
   <div class='card'><img class='zoom-img' src='search_freebsd//harcoded_exit_curr_rtt_rollback/plots/log_data1_throughput_goodput_zoomed.png'><p>Throughput and Goodput</p></div>
 </div>
 
+<hr class="bold-line">
+
+<h1>Linux</h1>
+
+<p style="max-width:800px;margin:20px auto 30px auto;font-size:16px;line-height:1.6em;color:#333;text-align:left;">
+  The following figures show <strong>Linux TCP performance</strong> under the below network conditions:
+</p>
+
+
+<table>
+<tr><th>Parameter</th><th>Default</th><th>Set Value</th></tr>
+<tr><td>wmem</td><td>4096 87380 6291456</td><td class='changed'>4096 1048576 134217728</td></tr>
+<tr><td>wmem</td><td>4096 16384 4194304</td><td class='changed'>4096 1048576 134217728</td></tr>
+</table>
+
+<h3>linux_both_off</h3>
+
+<div class='grid'>
+  <div class='card'><img class='zoom-img' src='Linux/linux_both_off_reported/plots/log_data1_cwnd_zoomed.png'><p>cwnd_ssthresh</p></div>
+  <div class='card'><img class='zoom-img' src='Linux/linux_both_off_reported/plots/log_data1_rtt.png'><p>rtt</p></div>
+  <div class='card'><img class='zoom-img' src='Linux/linux_both_off_reported/plots/log_data1_throughput_goodput.png'><p>throughput_goodput</p></div>
+</div>
+
+
+<h3>linux_SEARCH</h3>
+
+
+<div class='grid'>
+  <div class='card'><img class='zoom-img' src='Linux/linux_search_reported/log_data1_cwnd_zoomed.png'><p>cwnd_ssthresh</p></div>
+  <div class='card'><img class='zoom-img' src='Linux/linux_search_reported/log_data1_rtt.png'><p>rtt</p></div>
+  <div class='card'><img class='zoom-img' src='Linux/linux_search_reported/log_data1_search_windows.png'><p>Delivered vs Sent Window MB</p></div>
+  <div class='card'><img class='zoom-img' src='Linux/linux_search_reported/log_data1_search_norm.png'><p>Normalized diff</p></div>
+  <div class='card'><img class='zoom-img' src='Linux/linux_search_reported/log_data1_throughput_goodput.png'><p>throughput_goodput</p></div>
+
+</div>
 <!-- <h1>FreeBSD</h1>
 
 <p style="max-width:800px;margin:20px auto 30px auto;font-size:16px;line-height:1.6em;color:#333;text-align:left;">
@@ -244,7 +279,7 @@ hr.bold-line {
   <div class='card'><img class='zoom-img' src='freebsd/default_newreno_off_param_sweep-abc200_send1048576_inc8192_max134217728_sock268435456/plots/log_data1_throughput_goodput_zoomed.png'><p>throughput_goodput</p></div>
 </div>
 
-<!-- <hr class="section-line"> -->
+<!-- <hr class="section-line">
 
 <!-- <h2>default_newreno_search</h2>
 <div class='grid'>
