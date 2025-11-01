@@ -193,6 +193,39 @@ hr.bold-line {
 
 <hr class="bold-line">
 
+<h1>FreeBSD (Set_value)</h1>
+
+<p style="max-width:800px;margin:20px auto 30px auto;font-size:16px;line-height:1.6em;color:#333;text-align:left;">
+  In this section, we <strong>modified several TCP buffer and congestion control parameters</strong> 
+</p>
+
+
+<table>
+<tr><th>Parameter</th><th>Default</th><th>Set Value</th></tr>
+<tr><td>abc_l_var</td><td>2</td><td class='changed'>200</td></tr>
+<tr><td>sendspace</td><td>32768</td><td class='changed'>1048576</td></tr>
+<tr><td>sendbuf_inc</td><td>8192</td><td>8192</td></tr>
+<tr><td>sendbuf_max</td><td>2097152</td><td class='changed'>134217728</td></tr>
+<tr><td>maxsockbuf</td><td>2097152</td><td class='changed'>268435456</td></tr>
+</table>
+
+<h2>default_newreno_off</h2>
+<ul class="figure-desc">
+  <li>Here, buffer and congestion-related parameters such as <em>sendspace</em> and <em>maxsockbuf</em> are increased significantly.</li>
+  <li>The larger abc_l_var and buffers allow a higher <em>cwnd</em>.</li>
+  <li>The <em>cwnd</em> grows rapidly, but an abrupt collapse occurs due to a retransmission timeout triggered by excessive queue buildup.</li>
+  <li>As a result, throughput drops sharply after the peak.</li>
+</ul>
+<div class='grid'>
+  <div class='card'><img class='zoom-img' src='freebsd/default_newreno_off_param_sweep-abc200_send1048576_inc8192_max134217728_sock268435456/plots/log_data1_cwnd_theoretical_zoomed.png'><p>cwnd_theoretical cwnd</p></div>
+  <div class='card'><img class='zoom-img' src='freebsd/default_newreno_off_param_sweep-abc200_send1048576_inc8192_max134217728_sock268435456/plots/log_data1_cwnd_rwind_cwndlimited_zoomed.png'><p>cwnd_rwind</p></div>
+  <div class='card'><img class='zoom-img' src='freebsd/default_newreno_off_param_sweep-abc200_send1048576_inc8192_max134217728_sock268435456/plots/log_data1_rwind_cwnd_theoretical_cwnd_zoomed.png'><p>cwnd_rwind_theoretical</p></div>
+  <div class='card'><img class='zoom-img' src='freebsd/default_newreno_off_param_sweep-abc200_send1048576_inc8192_max134217728_sock268435456/plots/log_data1_srtts_zoomed.png'><p>srtt</p></div>
+  <div class='card'><img class='zoom-img' src='freebsd/default_newreno_off_param_sweep-abc200_send1048576_inc8192_max134217728_sock268435456/plots/log_data1_throughput_goodput_zoomed.png'><p>throughput_goodput</p></div>
+</div>
+
+<hr class="bold-line">
+
 <h1>FreeBSD_Default_SEARCH (cwnd rollback by current RTT)</h1>
 <table>
 <tr><th>Parameter</th><th>Default</th><th>Set Value</th></tr>
