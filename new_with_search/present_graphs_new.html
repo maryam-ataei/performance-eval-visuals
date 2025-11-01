@@ -282,7 +282,7 @@ hr.bold-line {
 
 <hr class="bold-line">
 
-<h1>FreeBSD_SEARCH (cwnd rollback by initial RTT)</h1>
+<h1>FreeBSD_Default_SEARCH (cwnd rollback by initial RTT)</h1>
 <table>
 <tr><th>Parameter</th><th>Default</th><th>Set Value</th></tr>
 <tr><td>abc_l_var</td><td>2</td><td class='changed'>200</td></tr>
@@ -303,7 +303,7 @@ hr.bold-line {
 
 <hr class="section-line">
 
-<h1>FreeBSD_SEARCH (cwnd rollback by current RTT)</h1>
+<h1>FreeBSD_Default_SEARCH (cwnd rollback by current RTT)</h1>
 
 <div class='grid'>
   <div class='card'><img class='zoom-img' src='search_freebsd/rollback_curr_rtt/log_data2_cwnd_sshthresh_zoomed.png'><p>cwnd and ssthresh</p></div>
@@ -314,9 +314,22 @@ hr.bold-line {
   <div class='card'><img class='zoom-img' src='search_freebsd/rollback_curr_rtt/log_data2_throughput_goodput_zoomed.png'><p>Throughput and Goodput</p></div>
 </div>
 
+<hr class="section-line">
+
+<h1>FreeBSD_Rack_SEARCH (cwnd rollback by current RTT)</h1>
+
+<div class='grid'>
+  <div class='card'><img class='zoom-img' src='search_freebsd/rack_rollback_curr_rtt/log_data1_cwnd_sshthresh_zoomed.png'><p>cwnd and ssthresh</p></div>
+  <div class='card'><img class='zoom-img' src='search_freebsd/rack_rollback_curr_rtt/log_data1_cwnd_rwind_cwndlimited_zoomed.png'><p>cwnd vs rwind</p></div>
+  <div class='card'><img class='zoom-img' src='search_freebsd/rack_rollback_curr_rtt/log_data1_rtt_sample_func_s_zoomed.png'><p>RTT Sample (ms)</p></div>
+  <div class='card'><img class='zoom-img' src='search_freebsd/rack_rollback_curr_rtt/log_data1_curr_delv_prev_sent_vs_now_s_search.png'><p>Delivered vs Sent Window MB</p></div>
+  <div class='card'><img class='zoom-img' src='search_freebsd/rack_rollback_curr_rtt/log_data1_norm_vs_now_s_search.png'><p>Normalized diff</p></div>
+  <div class='card'><img class='zoom-img' src='search_freebsd/rack_rollback_curr_rtt/log_data1_throughput_goodput_zoomed.png'><p>Throughput and Goodput</p></div>
+</div>
+
 <hr class="bold-line">
 
-<h1>FreeBSD_SEARCH (cannot exit)</h1>
+<h1>FreeBSD_Default_SEARCH (cannot exit)</h1>
 
 <table>
 <tr><th>Parameter</th><th>Default</th><th>Set Value</th></tr>
