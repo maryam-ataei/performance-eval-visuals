@@ -250,7 +250,7 @@ hr.bold-line {
 
 <hr class="bold-line">
 
-<h1>FreeBSD_Default_SEARCH (cwnd rollback by current RTT)</h1>
+<h1>FreeBSD_SEARCH (cwnd rollback by current RTT)</h1>
 <table>
 <tr><th>Parameter</th><th>Default</th><th>Set Value</th></tr>
 <tr><td>abc_l_var</td><td>2</td><td class='changed'>200</td></tr>
@@ -259,6 +259,8 @@ hr.bold-line {
 <tr><td>sendbuf_max</td><td>2097152</td><td class='changed'>134217728</td></tr>
 <tr><td>maxsockbuf</td><td>2097152</td><td class='changed'>268435456</td></tr>
 </table>
+
+<h2>default_newreno_SEARCH</h2>
 
 <div class='grid'>
   <div class='card'><img class='zoom-img' src='search_freebsd/harcoded_exit_curr_rtt_rollback/plots/log_data1_cwnd_theoretical_zoomed.png'><p>cwnd_theoretical cwnd</p></div>
@@ -269,6 +271,35 @@ hr.bold-line {
   <div class='card'><img class='zoom-img' src='search_freebsd//harcoded_exit_curr_rtt_rollback/plots/log_data1_norm_vs_now_s_search.png'><p>Normalized diff</p></div>
   <div class='card'><img class='zoom-img' src='search_freebsd//harcoded_exit_curr_rtt_rollback/plots/log_data1_throughput_goodput_zoomed.png'><p>Throughput and Goodput</p></div>
 </div>
+
+<hr class="section-line">
+
+<h2>RACK_newreno_SEARCH (Threshold 0.35)</h2>
+
+<div class='grid'>
+  <div class='card'><img class='zoom-img' src='search_freebsd/rack_rollback_curr_rtt/plots/log_data1_cwnd_theoretical_zoomed.png'><p>cwnd_theoretical cwnd</p></div>
+  <div class='card'><img class='zoom-img' src='search_freebsd/rack_rollback_curr_rtt/plots/log_data1_cwnd_sshthresh_zoomed.png'><p>cwnd and ssthresh</p></div>
+  <div class='card'><img class='zoom-img' src='search_freebsd/rack_rollback_curr_rtt/plots/log_data1_cwnd_rwind_cwndlimited_zoomed.png'><p>cwnd vs rwind</p></div>
+  <div class='card'><img class='zoom-img' src='search_freebsd/rack_rollback_curr_rtt/plots/log_data1_rtt_sample_func_s_zoomed.png'><p>RTT Sample (ms)</p></div>
+  <div class='card'><img class='zoom-img' src='search_freebsd/rack_rollback_curr_rtt/plots/log_data1_curr_delv_prev_sent_vs_now_s_search.png'><p>Delivered vs Sent Window MB</p></div>
+  <div class='card'><img class='zoom-img' src='search_freebsd/rack_rollback_curr_rtt/plots/log_data1_norm_vs_now_s_search.png'><p>Normalized diff</p></div>
+  <div class='card'><img class='zoom-img' src='search_freebsd/rack_rollback_curr_rtt/plots/log_data1_throughput_goodput_zoomed.png'><p>Throughput and Goodput</p></div>
+</div>
+
+<hr class="section-line">
+
+<h2>RACK_newreno_SEARCH (Threshold 0.35)</h2>
+
+<div class='grid'>
+  <div class='card'><img class='zoom-img' src='search_freebsd/rack_rollback_curr_rtt_thresh0.1/plots/log_data2_cwnd_theoretical_zoomed.png'><p>cwnd_theoretical cwnd</p></div>
+  <div class='card'><img class='zoom-img' src='search_freebsd/rack_rollback_curr_rtt_thresh0.1/plots/log_data2_cwnd_sshthresh_zoomed.png'><p>cwnd and ssthresh</p></div>
+  <div class='card'><img class='zoom-img' src='search_freebsd/rack_rollback_curr_rtt_thresh0.1/plots/log_data2_cwnd_rwind_zoomed.png'><p>cwnd vs rwind</p></div>
+  <div class='card'><img class='zoom-img' src='search_freebsd/rack_rollback_curr_rtt_thresh0.1/plots/log_data2_rtt_sample_func_s_zoomed.png'><p>RTT Sample(ms)</p></div>
+  <div class='card'><img class='zoom-img' src='search_freebsd/rack_rollback_curr_rtt_thresh0.1/plots/log_data2_curr_delv_prev_sent_vs_now_s_search.png'><p>Delivered vs Sent Window MB</p></div>
+  <div class='card'><img class='zoom-img' src='search_freebsd/rack_rollback_curr_rtt_thresh0.1/plots/log_data2_norm_vs_now_s_search.png'><p>Normalized diff</p></div>
+  <div class='card'><img class='zoom-img' src='search_freebsd/rack_rollback_curr_rtt_thresh0.1/plots/log_data2_throughput_goodput_zoomed.png'><p>Throughput and Goodput</p></div>
+</div>
+
 
 <hr class="bold-line">
 
